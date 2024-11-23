@@ -1,4 +1,5 @@
 import 'package:damaz/components/my_current_location.dart';
+import 'package:damaz/components/my_description_box.dart';
 import 'package:damaz/components/my_drawer.dart';
 import 'package:damaz/components/my_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
+            title: Text("title"),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -29,13 +31,13 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 // my current location
-                MyCurrentLocation()
+                const MyCurrentLocation(),
 
                 // description box
+                const MyDescriptionBox(),
 
               ],
             ),
-            title: Text("title"),
             ),
         ],
         body: Container(color: Colors.blue,),),
