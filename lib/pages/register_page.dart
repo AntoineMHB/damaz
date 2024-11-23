@@ -1,44 +1,30 @@
 import 'package:damaz/components/my_button.dart';
 import 'package:damaz/components/my_textfield.dart';
-import 'package:damaz/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({
+    super.key,
+    required this.onTap,});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // text editing controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  // login method 
-  void login(){
-    /*
-
-    fill out authentication here..
-    */
-
-    // navigation to homoe page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-        )
-    );
-  }
+  final TextEditingController confirmPasswordController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // here we access those different colors from the theme
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         
             // message, app slogan
             Text(
-              "DAMAZ",
+              "Let's create an account for you",
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary,
@@ -78,30 +64,39 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
               ),
 
+                         const SizedBox(height: 10),
+
+            // confirm password textfield
+            MyTextfield(
+              controller: confirmPasswordController, 
+              hintText: "Confirm password", 
+              obscureText: true,
+              ),
+
               const SizedBox(height: 10),
 
-            // sign in button
+            // sign up button
             MyButton(
-              text: "Sign In", 
-              onTap: login,
+              text: "Sign Up", 
+              onTap: () {},
             ),
 
             const SizedBox(height: 25),
 
         
-            // not a member? register now
+            // already have an account? Login here
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member?", 
+                  "already have an account?", 
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary),),
                 const SizedBox(width: 4),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Register now",
+                    "Login now",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold),),
@@ -112,5 +107,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
+}
 }
