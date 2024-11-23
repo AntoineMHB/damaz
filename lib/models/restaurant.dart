@@ -332,7 +332,37 @@ class Restaurant {
       ],
     ),
 
-    
   ];
+
+  /*
+
+  G E T T E R S
+
+  */
+
+  List<Food> get menu => _menu;
+
+   /*
+
+  O P E R A T I O N S
+  */
+
+  // add to cart
+
+  // remove from cart 
+
+  // get total price of cart
+
+  // get total number of items in cart
+
+  // clear cart
+
+   /*
+
+  H E L P E R S
+  */
+
+  // generate a receipt
+
 
 }

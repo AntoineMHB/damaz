@@ -3,6 +3,7 @@ import 'package:damaz/components/my_description_box.dart';
 import 'package:damaz/components/my_drawer.dart';
 import 'package:damaz/components/my_sliver_app_bar.dart';
 import 'package:damaz/components/my_tab_bar.dart';
+import 'package:damaz/models/food.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState(){
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: FoodCategory.values.length, vsync: this);
   }
 
   @override
@@ -71,6 +72,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
 
             ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => Text("third_tab_items"),
+            ),
+
+             ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => Text("third_tab_items"),
+            ),
+
+             ListView.builder(
               itemCount: 5,
               itemBuilder: (context, index) => Text("third_tab_items"),
             ),
