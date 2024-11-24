@@ -43,6 +43,8 @@ class FoodTile extends StatelessWidget {
                     ],
                   ),
                 ),
+
+                const SizedBox(width: 15,),
             
                 // food image
                 ClipRRect(
@@ -56,6 +58,13 @@ class FoodTile extends StatelessWidget {
               ],
             ),
           ),
+        ),
+
+        // divider line
+        Divider(
+          color: Theme.of(context).colorScheme.tertiary,
+          endIndent: 25,
+          indent: 25,
         )
       ],
     );
