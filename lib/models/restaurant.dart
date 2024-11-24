@@ -1,6 +1,7 @@
 import 'package:damaz/models/food.dart';
+import 'package:flutter/material.dart';
 
-class Restaurant {
+class Restaurant extends ChangeNotifier{
   // list of food menu
   final List<Food> _menu = [
     // burgers
@@ -208,7 +209,7 @@ class Restaurant {
       name: "Biscoff", 
       description: 
         "Delicious like life.", 
-      imagePath: "lib/images/desserts/biscoff_desserts.jpeg", 
+      imagePath: "lib/images/desserts/biscoff_dessert.jpeg", 
       price: 3.99, 
       category: FoodCategory.desserts, 
       availableAddons: [
@@ -264,7 +265,7 @@ class Restaurant {
       name: "Swiss dessert", 
       description: 
         "Just delicious.", 
-      imagePath: "lib/images/desserts/biscoff_desserts.jpeg", 
+      imagePath: "lib/images/desserts/swiss_desert.jpeg", 
       price: 2.99, 
       category: FoodCategory.desserts, 
       availableAddons: [

@@ -1,4 +1,5 @@
 import 'package:damaz/auth/login_or_register.dart';
+import 'package:damaz/models/restaurant.dart';
 import 'package:damaz/pages/login_page.dart';
 import 'package:damaz/pages/register_page.dart';
 import 'package:damaz/themes/theme_provider.dart';
@@ -6,9 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
-    ChangeNotifierProvider(create: (context) => ThemeProvider(),
-    child: const MyApp(),));
+    MultiProvider(providers: [
+      // theme provider
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+
+      // restaurant provider
+      ChangeNotifierProvider(create: (context) => Restaurant()),
+    ],
+    child: const MyApp(),
+  ),
+);
 }
 
 class MyApp extends StatelessWidget {
