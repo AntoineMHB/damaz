@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 
 class FoodPage extends StatefulWidget {
   final Food food;
+  // we create a map for the selected add ons
+  final Map<Addon, bool> selectedAddons = {};
 
-  const FoodPage({
+  FoodPage({
     super.key,
     required this.food,
-  });
+  }){
+    // initialize selected addons to be false
+    for(Addon addon in food.availableAddons) {
+      selectedAddons[addon] = false;
+    }
+
+  }
 
   @override
   State<FoodPage> createState() => _FoodPageState();
@@ -17,7 +25,10 @@ class FoodPage extends StatefulWidget {
 class _FoodPageState extends State<FoodPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Stack(
+      children: [
+        // scaffold UI
+        Scaffold(
       body:  SingleChildScrollView(
         child: Column(
           
@@ -92,8 +103,12 @@ class _FoodPageState extends State<FoodPage> {
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary),
                     ),
-                  value: false, 
-                  onChanged: (value) {},
+                  value: widget.selectedAddons[addon], 
+                  onChanged: (bool ? value) {
+                    setState(() {
+                      widget.selectedAddons[addon] = value!;
+                    });
+                  },
                 );
               }),
             )
@@ -111,6 +126,27 @@ class _FoodPageState extends State<FoodPage> {
         ],
             ),
       ),
-  );
+  ),
+
+        // back button 
+        SafeArea(
+          child: Opacity(
+            opacity: 0.6,
+            child: Container(
+              margin: const EdgeInsets.only(left: 25),
+              decoration: 
+                 BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondary,
+                  shape: BoxShape.circle,
+                  ),
+              child: IconButton(
+                icon:Icon(Icons.arrow_back_ios_rounded),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
